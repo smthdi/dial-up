@@ -597,38 +597,156 @@ Specific styles for the dial-up and fibre download types in the download cards
 
 /*[during testing, noticed that section #main to # speed evolution looked off on smaller screens]*/
 
+/* ============================= */
+/* Responsive layout: main to speed evolution */
+/* ============================= */
+
 @media (max-width: 768px) {
-  #main,
+  /* General section spacing */
+  .main,
+  #how-it-works,
   #speedEvolution {
     width: 100%;
-    padding: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
     box-sizing: border-box;
-    flex-direction: column;
-    align-items: center; /* optional, for centering */
   }
 
-  .how-tab-nav,
-  .evolution-tab-nav,
-  .game-details-container,
-  .info-card-content {
+  /* Landing section: text first, image below */
+  .main {
+    display: flex;
     flex-direction: column;
-    align-items: stretch;
+    gap: 1.5rem;
+    align-items: center;
+    text-align: center;
+  }
+
+  .main-left,
+  .main-right {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .main-image {
+    display: block;
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    margin: 0 auto;
+  }
+
+  .experience-title {
+    font-size: 1.3rem;
+    line-height: 1.4;
+  }
+
+  .connectBtn,
+  .action-btn {
+    width: 100%;
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* How-it-works tabs */
+  .how-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+  }
+
+  .how-tab-btn {
+    flex: 1 1 140px;
+  }
+
+  .how-tab-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .panel-left,
+  .panel-right {
+    width: 100%;
+  }
+
+  .panel-left img {
+    max-width: 220px;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+  }
+
+  /* Speed evolution meter rows */
+  .meters {
+    width: 100%;
+  }
+
+  .meter-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
+    margin-bottom: 1.25rem;
+    text-align: left;
+  }
+
+  .meter-row meter {
+    width: 100%;
+  }
+
+  .type,
+  .speed,
+  .period {
+    display: block;
+  }
+
+  /* Download comparison area */
+  .layout {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .file-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+  }
+
+  .file-tab-btn {
+    flex: 1 1 120px;
+  }
+
+  .file-tab-content,
+  .file-panel {
+    width: 100%;
+  }
+
+  .download-cards {
+    display: flex;
+    flex-direction: column;
     gap: 1rem;
   }
 
-  .site-title {
-    font-size: 1.6rem;
-    line-height: 1.4;
-    letter-spacing: 1px;
-  }
-
-  #speedEvolution meter,
-  .game-options-container span,
-  .info-card,
-  .how-tab-panel,
-  .evolution-tab-panel {
+  .download-card {
     width: 100%;
     max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Titles and description */
+  .site-title,
+  .subtitles {
+    line-height: 1.3;
+  }
+
+  .description {
+    font-size: 1rem;
+    line-height: 1.5;
   }
 }
 
