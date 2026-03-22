@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"><!--controls how the pages scales on different (smaller) devices-->
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"><!--third party font ref-->
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet"><!--third party font ref-->
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet"><!--third party font ref-->
+
+  <title>Dial-Up Connection Simulator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!--Short page so no back to top button needed-->
+
+  <!--SECTION dial-up connection simulation for user experience-->
+  <section id="simulation">
+
+    <div class="modem-display">
+      <h1>HAYES SmartModem</h1> <!--Model of modem-->
+
+      <div class="status-indicators"> <!--use  blinking lights for power, transfering data, receiving data and carrier dectected indicators-->
+        <div class="indicator">
+          <span>PWR</span>
+          <span class="light" id="light-pwr"></span>
+        </div>
+
+        <div class="indicator">
+          <span>TX</span>
+          <span class="light" id="light-tx"></span>
+        </div>
+
+        <div class="indicator">
+          <span>RX</span>
+          <span class="light" id="light-rx"></span>
+        </div>
+
+        <div class="indicator">
+          <span>CD</span>
+          <span class="light" id="light-cd"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="connection-info">
+      <p id="connection-status">Ready to connect...</p> <!--message before user decides to connect -->
+      <p id="connection-speed">0 bps</p>
+    </div>
+
+    <!--Progress bar active during connection-->
+    <div class="progress-wrapper">
+      <div class="progress-bar">
+        <div id="connection-progress"></div>
+      </div>
+    </div>
+
+    <!--placeholder for the output during simulation-->
+    <div class="simulation-container">
+      <div id="terminal-output"></div>
+    </div>
+
+    <!--fact box hidden at first but shows up during simulation-->
+    <div id="connection-fact" class="fact-box hidden">
+      <strong>Did you know?</strong>
+      <p id="fact-text"></p>
+    </div>
+
+    <!--buttons to start and end the simulation-->
+    <div class="button-row">
+      <button id="dialBtn">📞 DIAL NOW</button>
+      <button id="hangUpBtn" disabled>📵 HANG UP</button> <!--can't click this button unless dial now button pressed first/ disabled in js-->
+    </div>
+
+  </section>
+
+  <!--SECTION on the fact of the dial-up modem sound-->
+  <section id="audio-section">
+    <h2 class="subtitles">The Meaning behind the Sound of Dial-Up</h2>
+    <audio controls id="sound">
+        <source src="audio/dial-up-modem-01.mp3" type="audio/mp3"> <!--audio file for the user to listen to-->
+        Your browser does not support the audio element. <!--most browser supoort mp3 but some may not-->
+    </audio>
+
+    <!--fact box about the dial-up sound-->
+    <!--emojis pasted from chat gpt-->
+    <div id="audio-description">
+      <p>💡 The iconic sound of a dial-up modem connecting to the internet is a blend of various tones and noises that represent the complex process of establishing a connection.</p>
+      <p> Here's a breakdown of the different sounds you might hear:</p>
+
+      <ul>
+        <li><strong>📞 Dial Tone:</strong> A steady tone that indicates the modem is ready to dial. It’s the sound you hear when you pick up a phone.</li>
+        <li><strong>☎️ Dialing Tones:</strong> A series of beeps that represent the numbers being dialed. Each number corresponds to a specific tone.</li>
+        <li><strong>🤝 Handshake Tones:</strong> A sequence of high-pitched sounds that occur as the modem negotiates with the remote server to establish a connection. These tones can vary in pitch and duration.</li>
+        <li><strong>🚀 Connection Success:</strong> A final series of tones that indicate a successful connection has been established, often followed by a brief silence before data transmission begins.</li>
+      </ul>
+
+      <p>These sounds were not just random noises; they were an essential part of the communication process between your computer and the internet service provider, signaling each step of the connection process.</p>
+    </div>
+
+  </section>
+  
+  <script src="script.js"></script>
+</body>
+</html>

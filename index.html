@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" /><!--character encoding-->
+    <meta name="viewport" content="width=device-width, initial-scale=1" /> <!--controls how the pages scales on different (smaller) devices-->
+    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"><!--third party icon ref-->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"><!--third party font ref-->
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet"><!--third party font ref-->
+    <title>The Internet Dial-Up Time Machine</title> <!--page title-->
+    <link rel="stylesheet" href="style.css"> <!--css stylesheet linked-->
+</head>
+
+<body>
+    <!--Button to go back to top of the page-->
+    <button onclick="topFunction()" id="TopBtn" title="Go to top"> ⬆ Back to top</button> <!--references the JS function to be execute when user clicks (from: W3Schools)-->
+
+    <!--Hamburger nagigation bar that expands when clicked on the three bars-->
+    <!--Code from https://christiantietze.de/posts/2025/01/responsive-scalable-hamburger-menu-accessible-css/   changed styles using css-->
+    <nav id="menu-navigation">
+        <input type="checkbox" id="hamburger-toggle" aria-label="hamburger" aria-controls="menu" aria-expanded="false" />
+        <label for="hamburger-toggle" id="hamburger" aria-hidden="true"> <!--screen reader won't read "bar bar bar"-->
+        <span class="slice"></span><!--Bar for the hamburger menu icon x3-->
+        <span class="slice"></span>
+        <span class="slice"></span>
+        </label>
+        
+        <!--Menu titles to navigate too-->
+        <ul id="menu" type=" checkbox" aria-controls = "menu" aria-expanded="false" aria-label="Toggle nagivation menu"> 
+        <li><a href="#site-title">Home</a></li>
+        <li><a href="#how-it-works">How Dial-Up Works</a></li> <!-- uses the id tags of each section for navigation anchor-->
+        <li><a href="#speedEvolution">Speed Evolution</a></li>
+        <li><a href="#cons-dial-up">Why Dial-Up Was Problematic</a></li>
+        <li><a href="#internet-evolution">Internet Evolution</a></li>
+        <li><a href="#quiz">Quiz Time!</a></li>
+        <li><a href="#goodbye">Goodbyes and credits</a></li>
+        <li><a href="#about-author">About the author</a></li>
+        </ul>
+    </nav>
+
+    <h1 id = "site-title" class="site-title">The Internet Dial-Up Time Machine</h1> 
+    <div class="main"> <!--main landing  section-->
+        <div class="main-left"> <!--left side of section is text-->
+
+            <!-- Small action button to open and transfer to simulation page -->
+            <button class="connectBtn" id="connectBtn"> <!--id required for JS reference-->
+                <i class="fa-solid fa-download"></i> <!--for the icon from font awesome-->
+                <span>Click to connect!</span>
+            </button>
+
+            <h2 class="experience-title">EXPERIENCE ACCESSING THE INTERNET IN THE 90S.</h2>
+            <p>
+            Travel back to when entering the internet meant listening to an annoying sound, hoping that no one calls and lots of waiting...
+            </p>
+
+
+            <a class="action-btn" href="#how-it-works"> <!--action button to scroll down to content (next section)-->
+                <span>▶</span>
+                Learn how dial-up worked
+            </a>
+        </div>
+
+        <div class="main-right"> <!--right side of section contains image of pixel 90s computer-->
+            <img class = "main-image" src="images/OldComputer.jpg" alt="Pixelated image of old 1990s desktop computer with leaves growing out of it" width="400" height="300">
+            <!--alt text for screen readers or in case picture does not load.-->
+        </div>
+    </div>
+    
+
+<!--SECTION about the steps during dial up internet access using tabs navigation-->
+    <section id="how-it-works" class="how-it-works" > 
+        
+        <h2 class="subtitles">HOW DID DIAL-UP WORK?</h2>
+
+        <!--sub section for individual tab names-->
+        <div class="how-tabs">
+            <button class="how-tab-btn active" role="tab" aria-selected="true" data-tab="computer"> <!--tells user which tab is currently active-->
+                Your Computer
+            </button>
+            <button class="how-tab-btn" role="tab" aria-selected="false" data-tab="modem">
+                The Modem
+            </button>
+            <button class="how-tab-btn" role="tab" aria-selected="false" data-tab="phone">
+                The Phone
+            </button>
+            <button class="how-tab-btn" role="tab" aria-selected="false" data-tab="isp">
+                The ISP
+            </button>
+            <button class="how-tab-btn" role="tab" aria-selected="false" data-tab="internet">
+                Internet
+            </button>
+        </div>
+
+        <div class="how-tab-content"> <!--sub section for content for each tab-->
+
+            <article class="how-tab-panel active" id="computer"> <!-- article element used as it is independant piece of content(self-contained); for accessibility assistive tech-->
+                <!--id required for JS code to reference from for each tab-->
+                <div class="panel-left"> <!--left side has pixelated picture-->
+                    <img src="images/pixelComputer.png" alt="Pixel art computer" />
+                </div>
+
+                <div class="panel-right"> <!--right side has the explanation (text)-->
+                    <h2>🖥 Your computer...</h2> <!--any emojis pasted are from ChatGPT promt: "can you give me emojis to paste for [...]"-->
+                    <p>
+                    Your computer creates digital/binary data using 1s and 0s. To access the
+                    internet during the dial-up era, that data first had to leave your
+                    computer and travel through older telephone infrastructure.
+                    </p>
+                    <p>They use the same frequency bands as voice calls, hence the interference when picking up the phone.</p>
+                    <p>
+                    The problem was that telephone lines were designed for voice, not for
+                    direct computer data, so the signal had to be converted first.
+                    </p>
+                </div>
+            </article>
+
+            <article class="how-tab-panel" id="modem">
+                <div class="panel-left">
+                    <img src="images/modem.png" alt="Pixel art modem" />
+                </div>
+
+            <div class="panel-right">
+                <h2>📟 The modem...</h2>
+                <p>
+                The modem acted as a translator. It converted your computer’s digital
+                signals into analogue sounds that could travel through a phone line (the copper wires). This process is called modulation.
+                </p>
+                <p>
+                It also converted incoming analogue signals back into digital data
+                your computer could understand. This process is called demodulation.
+                </p>
+                <p> Fun Fact: The term "modem" comes from "modulator-demodulator."</p>
+            </div>
+            </article>
+
+            <article class="how-tab-panel" id="phone">
+                <div class="panel-left">
+                    <img src="images/phone.jpg" alt="Pixel art telephone" />
+                </div>
+
+                <div class="panel-right">
+                    <h2>☎ The phone line...</h2>
+                    <p>
+                    The connection travelled through the same telephone line people used
+                    for calls. That is why using the internet could block the phone and
+                    why calls could interrupt the connection.
+                    </p>
+                </div>
+            </article>
+
+            <article class="how-tab-panel" id="isp">
+                <div class="panel-left">
+                    <img src="images/isp.jpg" alt="drawing internet service provider letters" />
+                </div>
+
+                <div class="panel-right">
+                    <h2>🏢 The ISP server...</h2>
+                    <p>
+                    The Internet Service Provider received your connection, checked your
+                    user account, and connected you onward to the wider internet.
+                    </p>
+                </div>
+            </article>
+
+            <article class="how-tab-panel" id="internet">
+                <div class="panel-left">
+                    <img src="images/pixelInternet.jpg" alt="Pixel art globe representing the internet" />
+                </div>
+
+                <div class="panel-right">
+                    <h2>🌍 Internet...</h2>
+                    <p>
+                    Once connected, your data could travel across networks to reach
+                    websites, email servers, and online services, although much more
+                    slowly than modern broadband.
+                    </p>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+<!--SECTION that compares download speed of connections throughout the years from 1990s until present-->    
+    <section id="speedEvolution">
+        <h2 class="subtitles">Speed Evolution</h2>
+        <p class="description">Let's explore how fast (or slow) downloading content was...</p>
+
+        <div class="meters">
+
+            <div class="meter-row">
+            <label class="type" for="dial-up">Dial-up</label>
+            <label class="speed" for="dial-up">56 Kbps</label>
+            <meter id="speed-dial-up" value="0" max="100" data-target = "5">5%</meter> <!--for the meter (progress) bars which are also animated-->
+            <label class="period" for="dial-up">1990s</label>
+            </div>
+
+            <div class="meter-row">
+            <label class="type" for="dsl">DSL</label>
+            <label class="speed" for="dsl">8 Mbps</label>
+            <meter id="speed-dsl" value="0" max="100" data-target = "10">10%</meter> <!--animated using js, starts at 0 and then ends at 10% of length of bar-->
+            <label class="period" for="dsl">1990s - 2000s</label>
+            </div>
+
+            <div class="meter-row">
+            <label class="type" for="cable">Cable</label>
+            <label class="speed" for="cable">100 Mbps</label>
+            <meter id="speed-cable" value="0" max="100" data-target = "50">50%</meter>
+            <label class="period" for="cable">2000s - 2010s</label>
+            </div>
+
+            <div class="meter-row">
+            <label class="type" for="fiber">Fiber</label>
+            <label class="speed" for="fiber">1 Gbps+</label>
+            <meter id="speed-fiber" value="0" max="100" data-target = "100">100%</meter>
+            <label class="period" for="fiber">2010s - Present</label>
+            </div>
+
+        </div>
+
+        <!--same section, compares th download speed of different files tabs between dial-up and fobre optics-->
+        <div class = downloads>
+            <h3> Choose a file to download</h3>
+            <div class="layout">
+            <div class="file-tabs"> <!--uses horizontal tabs to navigate-->
+                <button class="file-tab-btn active" role="tab" aria-selected="true" data-tab="photo"> <!--data tab for JS code reference-->
+                    Photo
+                </button>
+                <button class="file-tab-btn" role="tab" aria-selected="false" data-tab="song">
+                    Song
+                </button>
+                <button class="file-tab-btn" role="tab" aria-selected="false" data-tab="movie">
+                    Movie
+                </button>
+                <button class="file-tab-btn" role="tab" aria-selected="false" data-tab="game">
+                    Game
+                </button>
+
+            </div>
+
+            <div class="file-tab-content"> <!--for each file tab, 1 panels shows comparison in downaload speed-->
+
+                <div class="file-panel active" id="photo"><!--id needed for JS code reference-->
+                    <div class="download-cards">
+                        <!--seperate classes used for styling for each line and for uniformity-->
+                        <article class="download-card dialup-card">
+                            <div class="download-icon">🐌</div>
+                            <h4 class="download-type dialup-type">Dial-Up (56 Kbps)</h4>
+                            <p class="download-time">12 minutes</p>
+                            <p class="download-caption">Hope nobody calls!</p>
+                        </article>
+
+                        <article class="download-card fibre-card">
+                            <div class="download-icon">🚀</div>
+                            <h4 class="download-type fibre-type">Fibre (1 Gbps)</h4>
+                            <p class="download-time">0 seconds</p>
+                            <p class="download-caption">Click and it’s done!</p>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="file-panel" id="song">
+                    <div class="download-cards">
+                        <article class="download-card dialup-card">
+                            <div class="download-icon">🐌</div>
+                            <h4 class="download-type dialup-type">Dial-Up (56 Kbps)</h4>
+                            <p class="download-time">9 minutes</p>
+                            <p class="download-caption"> Could've listened to 2 songs!</p>
+                        </article>
+
+                        <article class="download-card fibre-card">
+                            <div class="download-icon">🚀</div>
+                            <h4 class="download-type fibre-type">Fibre (1 Gbps)</h4>
+                            <p class="download-time">0 seconds</p>
+                            <p class="download-caption">Ready almost instantly.</p>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="file-panel" id="movie">
+                    <div class="download-cards">
+                        <article class="download-card dialup-card">
+                            <div class="download-icon">🐌</div>
+                            <h4 class="download-type dialup-type">Dial-Up (56 Kbps)</h4>
+                            <p class="download-time">2 days</p>
+                            <p class="download-caption">Better go cinema.</p>
+                        </article>
+
+                        <article class="download-card fibre-card">
+                            <div class="download-icon">🚀</div>
+                            <h4 class="download-type fibre-type">Fibre (1 Gbps)</h4>
+                            <p class="download-time">2 minutes</p>
+                            <p class="download-caption">Much better!.</p>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="file-panel" id="game">
+                    <div class="download-cards">
+                        <article class="download-card dialup-card">
+                            <div class="download-icon">🐌</div>
+                            <h4 class="download-type dialup-type">Dial-Up (56 Kbps)</h4>
+                            <p class="download-time">18 hours</p>
+                            <p class="download-caption">Leave it overnight...</p>
+                        </article>
+
+                        <article class="download-card fibre-card">
+                            <div class="download-icon">🚀</div>
+                            <h4 class="download-type fibre-type">Fibre (1 Gbps)</h4>
+                            <p class="download-time">40 seconds</p>
+                            <p class="download-caption">Thank You, Modern Internet!</p>
+                        </article>
+                    </div>
+                </div>
+
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <!--SECTION about the limitations of dial-up technology-->
+    <section id = "cons-dial-up">
+        <h2 class="subtitles">Why Dial-Up Was Problematic</h2>
+        <div class="info-card-content">
+            <!-- x6 informartion fact-cards layed out -->
+            <article class="info-card"><!--self contained-->
+                <div class="info-icon"> <!--used svg icons from https://lucide.dev/ -->  <!--seperate class for styling-->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" stroke="#2ee681" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 16a12 12 0 0 1 24 0"/>
+                    <line x1="16" y1="16" x2="22" y2="10"/> <!--changed scales of proportionality for each of them using viewBox-->
+                    </svg>
+                </div>
+                <h4 class="caption">Very slow speed</h4> <!--titles for each card-->
+                <ul>
+                    <li>Webpages took a long time to load</li>
+                    <li>Downloading files could take hours or days</li>
+                    <li>Streaming media was nearly impossible</li>
+                </ul>
+            </article>
+
+            <article class="info-card">
+                <div class="info-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" stroke="#2ee681" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="9" y="3" width="14" height="18" rx="2"/>
+                    <line x1="3" y1="3" x2="29" y2="29"/>
+                    </svg>
+                </div>
+                <h4 class="caption">Tied-up phones lines</h4>
+                <ul>
+                    <li>Could not use phone line while online!</li>
+                    <li>Had to wait for the line to be available</li>
+                    <li>Interrupted calls were common</li>
+                </ul>
+            </article>
+
+            <article class="info-card">
+                <div class="info-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" stroke="#2ee681" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="16" cy="16" r="12"/>
+                    <polyline points="16,9 16,16 21,18"/>
+                    </svg>
+                </div>
+                <h4 class="caption">Long connection times</h4>
+                <ul>
+                    <li>Connection process could take several minutes</li>
+                    <li>Users had to wait for the modem to establish a connection</li>
+                    <li>Time-consuming process with frequent disconnections</li>
+                </ul>
+            </article>
+
+            <article class="info-card">
+                <div class="info-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" stroke="#2ee681" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12a16 16 0 0 1 22 0"/>
+                    <path d="M8 16a11 11 0 0 1 16 0"/>
+                    <path d="M12 20a6 6 0 0 1 8 0"/>
+                    <line x1="3" y1="3" x2="29" y2="29"/>
+                    </svg>
+                </div>
+                <h4 class="caption">Unstable connection</h4>
+                <ul>
+                    <li>Connection would frequently drop and depended on distance to ISP</li>
+                    <li>Users had to re-establish the connection often</li>
+                    <li>Difficult to maintain consistent connectivity</li>
+                </ul>
+            </article>
+
+            <article class="info-card">
+                <div class="info-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" stroke="#2ee681" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="16" cy="16" r="12"/>
+                    <text x="16" y="21" text-anchor="middle" font-size="14" fill="#2ee681">$</text>
+                    </svg>
+                </div>
+                <h4 class="caption">Expensive usage</h4>
+                <ul>
+                    <li>High pay-per-minute or data usage fees</li>
+                    <li>Additional costs for phone line usage</li>
+                    <li>Expensive setup and maintenance !</li>
+                </ul>
+            </article>
+
+            <article class="info-card">
+                <div class="info-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" stroke="#2ee681" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="8" y="14" width="16" height="12" rx="2"/>
+                    <path d="M12 14v-4a4 4 0 0 1 8 0v4"/>
+                    </svg>
+                </div>
+                <h4 class="caption">Security limitations</h4>
+                <ul>
+                    <li>Limited encryption and security measures</li>
+                    <li>Prone to hacking and unauthorized access</li>
+                    <li>Difficult to protect sensitive information</li>
+                </ul>
+            </article>
+        </div>
+    </section>
+
+    <!--SECTION Internet evolution styles similarly to #how-it-works section (using tabs)-->
+    <section id="internet-evolution">
+        
+        <h2 class="subtitles">THE EVOLUTION OF THE INTERNET</h2>
+        <!--tab names-->
+        <div class="evolution-tabs" role = "tablist">
+            <button class="evolution-tab-btn active" role="tab" aria-selected="true" data-tab="dial-up">
+                📞 Dial-Up <!--emojis pasted from chatGPT-->
+            </button>
+            <button class="evolution-tab-btn" role="tab"  data-tab="dsl-cable">
+                🔌 DSL &amp; Cable <!--used &amp element to avoid confusion in browser during parsing-->
+            </button>
+            <button class="evolution-tab-btn" role="tab"  data-tab="broadband">
+                📡 Broadband
+            </button>
+            <button class="evolution-tab-btn" role="tab" data-tab="fibre">
+                💎 Fibre &amp; 5G
+            </button>
+
+        </div>
+
+        <!--tab content-->
+        <div class="evolution-tab-content">
+
+            <article class="evolution-tab-panel active" id="dial-up"> <!--first panel active--> <!--id required for JS code reference-->
+
+                <div class="panel">
+                    <h2>The Dial-Up Era (1990s - 2000s)</h2>
+                    <p>
+                        <b>Key Features:</b>
+                    </p>
+                    <ul>
+                        <li>Used existing telephone lines and infrastructure (only way to easily connect the general public)</li>
+                        <li>Used famous 'handshake' connection sound (skrrr boop boop)</li>
+                        <li>AOL (America Online) was the most popular internet service provider</li>
+                        <li>Pay-per-minute pricing or limited monthly hours</li>
+                        <li> Could not use phone line while online! (because they used the same frequency and line)</li>
+                    </ul>
+                </div>
+            </article>
+
+            <article class="evolution-tab-panel" id="dsl-cable"> <!--self contained-->
+
+                <div class="panel">
+                    <h2>The DSL & Cable Era (2000s - 2010s)</h2>
+                        <p>
+                            <b>Key Features:</b>
+                        </p>
+                        <ul>
+                            <li>Used phone lines but at high frequency (could now use phone lines!)</li>
+                            <li>Always on! No dialing required!</li>
+                            <li>Speed depended on the distance from the telephone exchange</li>
+                            <li>Required a special filter to separate voice and data signals</li>
+                        </ul>
+                        
+                </div>
+            </article>
+
+            <article class="evolution-tab-panel" id="broadband">
+                <div class="panel">
+                    <h2>The Broadband Era (2010s - Present)</h2>
+                    <p>
+                        <b>Key Features:</b>
+                    </p>
+                 
+                    <ul>
+                        <li>Cable internet shared TV infrastructure</li>
+                        <li>Made video streaming possible!</li>
+                        <li>No more cables thansk to WiFi!</li>
+                        <li>Enabled social media and cloud services</li>
+                    </ul>
+                  
+                </div>
+            </article>
+
+            <article class="evolution-tab-panel" id="fibre">
+                <div class="panel">
+                    <h2>The Fibre & 5G Era (2019 - present)</h2>
+                    <p>
+                        <b>Key Features:</b>
+                    </p>
+                    
+                    <ul>
+                        <li>Data is transmitted as light through glass fibre cables, offering much higher speeds and lower latency than traditional copper wires</li>
+                        <li>Nearly unlimited bandwidth</li>
+                        <li>High-speed connectivity for both residential and commercial use</li>
+                        <li>Enables 4K video streaming and other high-bandwidth applications eg. virtual reality and gaming</li>
+                    </ul>
+                    
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+    <!--interactive quiz section-->
+    <section id= "quiz"> 
+        <h2 class = "subtitles"> <!-- svg icon from in the title https://lucide.dev/ -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
+                class="lucide lucide-graduation-cap-icon lucide-graduation-cap">
+                <path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/>
+                <path d="M22 10v6"/>
+                <path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/>
+            </svg>
+            Quiz Time!
+        </h2> <!--icon and text title on same line-->
+
+        <div class="main-quiz"> <!--Quiz code from https://dev.to/sulaimonolaniran/building-a-simple-quiz-with-html-css-and-javascript-4elp changed colour and size ???-->
+            <div class="modal-container" id="score-modal">
+
+                <!--results pop up at the end of the quiz -->
+                <div class="modal-content-container">
+
+                    <h1>Congratulations, Quiz Completed.</h1>
+
+                    <div class="grade-details">
+                        <p>Attempts : 10</p>
+                        <p>Wrong Answers : <span id="wrong-answers"></span></p>
+                        <p>Right Answers : <span id="right-answers"></span></p>
+                        <p>Grade : <span id="grade-percentage"></span>%</p>
+                        <p ><span id="remarks"></span></p>
+                    </div>
+                    
+                    <!--continue button below the pop-up results message-->
+                    <div class="modal-button-container">
+                        <button onclick="closeScoreModal()">Close</button> <!--changed text on button from 'continue' to 'close'(more appropriate for user to close they wont continue the quiz from 0) -->
+                    </div>
+
+                </div>
+            </div>
+            <!-- end of modal of quiz details-->
+
+            <div class="game-quiz-container">
+
+                <div class="game-details-container">
+                    <h1>Score : <span id="player-score"></span> / 10</h1>
+                    <h1> Question : <span id="question-number"></span> / 10</h1>
+                </div>
+
+                <div class="game-question-container">
+                    <h1 id="display-question"></h1>
+                </div>
+
+                <div class="game-options-container">
+
+                    <!--if user does not pick an option, an appropriate message tells them to (with continue buttom)-->
+                    <div class="modal-container" id="option-modal">
+
+                            <div class="modal-content-container">
+                                <h1>Please Pick An Option</h1>
+
+                                <div class="modal-button-container">
+                                    <button onclick="closeOptionModal()">Continue</button>
+                                </div>
+
+                            </div>
+
+                    </div>
+
+                    <!--radio button used so user can select only one option from a group-->
+                    <!--id uniquely identifies radio output and connects the label for JS code-->
+                    <span>
+                        <input type="radio" id="option-one" name="option" class="radio" value="optionA" />
+                        <label for="option-one" class="option" id="option-one-label"></label>
+                        <!--empty label so JS inserts the answer-->
+                    </span> <!--for grouping input and label-->
+
+
+                    <span>
+                        <input type="radio" id="option-two" name="option" class="radio" value="optionB" />
+                        <label for="option-two" class="option" id="option-two-label"></label>
+                    </span>
+
+
+                    <span>
+                        <input type="radio" id="option-three" name="option" class="radio" value="optionC" />
+                        <label for="option-three" class="option" id="option-three-label"></label>
+                    </span>
+
+
+                    <span>
+                        <input type="radio" id="option-four" name="option" class="radio" value="optionD" />
+                        <label for="option-four" class="option" id="option-four-label"></label>
+                    </span>
+
+
+                </div>
+
+                <!--next button-->
+                <div class="next-button-container">
+                    <button onclick="handleNextQuestion()">Next Question</button> <!--executes function when clicked-->
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+    <!--SECTION : end of the page, farewell to the user (in the context of journey through the time machine- name of page)-->
+    <section id="goodbye">
+        <h2 class="subtitles">Connection Terminated.</h2>
+        <p class="description">We hope you enjoyed the trip down memory lane and gained a new appreciation for modern internet speeds. Feel free to explore more about the history of the web and how it has evolved over time.</p>
+    </section>
+
+    <!--SECTION of buttons to take user to seperate page for references OR pop-up info about the author and purpose of the website-->
+    <section id="credits">
+        <h3>Learn more : </h3>
+        <p>To find out more information about the evolution of internet connections, where the information came from,</p>
+        <p>and information about any external code used to make this site, click the button below!</p> 
+
+        <!--button for the references webpage using JS code-->
+        <button class="refBtn" id = "refBtn">
+            <i class="fa-solid fa-download"></i>
+            <span>References and Credits!</span>
+        </button>
+
+        <!--button that opens pop-up information about the author-->
+        <button id="about-author">👤 About the Author</button>
+        <div id = "author-info">
+            <h3>ABOUT THE AUTHOR:</h3>
+                <p>This website was created by a BSc Information Studies student at UCL as part of their INST0087 Extended Project.</p>
+                <p>The project explores the evolution of internet speeds and provides an interactive experience for users to learn about the history of internet connections.</p>
+                <p>The author is passionate about technology and aims to educate others about the advancements in internet technology over the years.</p>
+                <p>Hope you enjoyed your journey!</p>
+        
+        <button id="close-author-info">OK</button>
+        </div>
+
+    </section>
+
+<!--END OF WEBSITE and MAIN PAGE-->
+    <script src="script.js"></script> <!--javascript code linked-->
+
+</body>
+</html>
