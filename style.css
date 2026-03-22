@@ -602,17 +602,6 @@ Specific styles for the dial-up and fibre download types in the download cards
 /* ============================= */
 
 @media (max-width: 768px) {
-  /* General section spacing */
-  .main,
-  #how-it-works,
-  #speedEvolution {
-    width: 100%;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    box-sizing: border-box;
-  }
-
-  /* Landing section: text first, image below */
   .main {
     display: flex;
     flex-direction: column;
@@ -628,39 +617,30 @@ Specific styles for the dial-up and fibre download types in the download cards
   }
 
   .main-image {
-    display: block;
     width: 100%;
     max-width: 320px;
     height: auto;
+    display: block;
     margin: 0 auto;
   }
 
-  .experience-title {
-    font-size: 1.3rem;
-    line-height: 1.4;
-  }
-
-  .connectBtn,
-  .action-btn {
-    width: 100%;
-    max-width: 320px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  /* How-it-works tabs */
-  .how-tabs {
+  .how-tabs,
+  .file-tabs {
     display: flex;
     flex-wrap: wrap;
     gap: 0.75rem;
     justify-content: center;
   }
 
-  .how-tab-btn {
+  .how-tab-btn,
+  .file-tab-btn {
     flex: 1 1 140px;
   }
 
-  .how-tab-panel {
+  /* do NOT force all panels visible */
+  .how-tab-panel.active,
+  .evolution-tab-panel.active,
+  .file-panel.active {
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -673,59 +653,25 @@ Specific styles for the dial-up and fibre download types in the download cards
   }
 
   .panel-left img {
+    width: 100%;
     max-width: 220px;
-    width: 100%;
     height: auto;
-    margin: 0 auto;
     display: block;
-  }
-
-  /* Speed evolution meter rows */
-  .meters {
-    width: 100%;
+    margin: 0 auto;
   }
 
   .meter-row {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 0.4rem;
+    gap: 0.5rem;
     margin-bottom: 1.25rem;
-    text-align: left;
   }
 
   .meter-row meter {
     width: 100%;
   }
 
-  .type,
-  .speed,
-  .period {
-    display: block;
-  }
-
-  /* Download comparison area */
-  .layout {
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-  }
-
-  .file-tabs {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    justify-content: center;
-  }
-
-  .file-tab-btn {
-    flex: 1 1 120px;
-  }
-
-  .file-tab-content,
-  .file-panel {
-    width: 100%;
-  }
-
+  .layout,
   .download-cards {
     display: flex;
     flex-direction: column;
@@ -736,17 +682,6 @@ Specific styles for the dial-up and fibre download types in the download cards
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
-  }
-
-  /* Titles and description */
-  .site-title,
-  .subtitles {
-    line-height: 1.3;
-  }
-
-  .description {
-    font-size: 1rem;
-    line-height: 1.5;
   }
 }
 
