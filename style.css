@@ -603,6 +603,8 @@ Specific styles for the dial-up and fibre download types in the download cards
     width: 100%;
     padding: 1rem;
     box-sizing: border-box;
+    flex-direction: column;
+    align-items: center; /* optional, for centering */
   }
 
   .how-tab-nav,
