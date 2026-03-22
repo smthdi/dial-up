@@ -1,0 +1,1483 @@
+/* Style for the whole website used in index.html, References.html, dialupSimulation.html */
+
+/*===================================================================================================
+Hamburger Menu Style Section
+
+Source: https://christiantietze.de/posts/2025/01/responsive-scalable-hamburger-menu-accessible-css/
+modification: font colour, background, font-style
+======================================================================================================*/
+
+:root /* defined variables to be used in the whole section*/{
+  --hamburger-slice-color: #00ff88;
+  --size: clamp(16px, 10vmin, 32px); 
+}
+
+#menu-navigation /* ensures menu sits above other elements*/{
+  position: relative;
+  z-index: 1000;
+}
+
+/*hidden by default and positioned below navigation icon*/
+#menu {
+  font-size: 1.25rem;
+  visibility: hidden;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 100; /* for when it toggles out*/
+   
+  background: black;
+  border-radius: 2.5px;
+  position: absolute;
+  top: calc(100% + 1px);/*avoids overlapping border*/
+  left: 0;
+  min-width: 20vw;/*responsive width with size*/
+  width: fit-content;
+  height: 100vh;
+/*animation effect made using 3D transforms*/
+  transform-origin: top left;
+  transform: rotateY(-90deg);
+  opacity: 0.3;
+/*smooth transition for menu opening*/
+  transition: 150ms all 100ms ease-out;
+  border-right: 1px solid #00ff88;
+}
+/*toggle mechanism*/
+#hamburger-toggle {
+  opacity: 0;
+  cursor: pointer;
+  position: absolute;
+}
+/*container for hambirger button*/
+#hamburger {
+  display: block;
+  padding: 0.5rem;
+  cursor: pointer;
+  width: var(--size);
+  height: var(--size);
+  box-sizing: content-box;
+  transition: transform 0.2s ease;
+}
+
+/*for the individual bar of hamburger menu icon*/
+#hamburger .slice {
+  --slice-height: 2px;
+  display: block;
+  position: relative;
+  width: 100%;
+  height: var(--slice-height, 2px);
+  border-radius: var(--slice-height);
+  transition: all 0.2s ease;
+  background-color: var(--hamburger-slice-color);
+  opacity: 90%;
+  margin-top: 22%; /* Fallback to produce something hamburger-ish if calc is not available */
+  margin-top: calc(33% - var(--slice-height));
+  top: calc((33% - var(--slice-height)) / -2);
+}
+
+/*reveal menu*/
+#hamburger-toggle:checked ~ #menu {
+  visibility: visible;
+  transform: rotateX(0deg);
+  opacity: 1;
+}
+/*Transform hamburger icon into X icon*/
+#hamburger-toggle:checked ~ #hamburger .slice:nth-child(1) {
+  top: calc(50% - 33% + var(--slice-height) / 2);
+  transform: rotate(45deg);
+}
+#hamburger-toggle:checked ~ #hamburger .slice:nth-child(2) {
+  opacity: 0;
+}
+#hamburger-toggle:checked ~ #hamburger .slice:nth-child(3) {
+  top: calc(-50% + var(--slice-height) / 2);
+  transform: rotate(-45deg);
+}
+
+/*menu bar styling*/
+#navigation {
+  padding: 1vh 2vw;
+  border-bottom: 1px solid #00ff88;
+  background: black;
+  border: white;
+  border-radius: 2.5px;
+}
+
+li {
+  list-style: none;
+}
+
+#menu-navigation a {
+  display: block;
+  padding: 1rem;
+  font-family:'Times New Roman', Times, serif;
+  color:#00ff88;
+  text-decoration:none;
+}
+
+/*hover interaction for bette UX*/
+#menu li:hover{
+  font-weight:bold;
+}
+
+
+/* ================================================================
+General styles 
+==================================================================*/
+body{
+    margin:0;
+    background-color:#05070a;
+    color:white;
+    font-family: Arial, sans-serif;
+}
+
+/* Smooth scrolling for anchor links, positive smooth UX */
+html {
+  scroll-behavior: smooth;
+}
+/*=====================================================================
+Style the connect and reference button for consistency
+=======================================================================*/
+
+.connectBtn, .refBtn{
+    background:#00ff9c;
+    color:black;
+    border:none;
+    padding:30px 36px;
+    font-size: 1rem;
+    border-radius:10px;
+    cursor:pointer;
+    margin-bottom:15px;
+    font-family:'Press Start 2P', monospace;/*pixelaed font for retro aesthetics*/
+}
+
+.connectBtn:hover, .refBtn:hover{
+    background:#0a0a0a;
+    color:#00ff9c;
+    border:2px solid #00ff9c;
+    border-radius:10px;
+}
+
+/*responsive and centered styling of reference button*/
+.refBtn{
+  width: auto;
+  align-self:center;
+}
+
+/* =================================================================
+Main TEXT content of landing page styles 
+=====================================================================*/
+.main{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:60px;
+}
+
+/* Left side of the main content container */
+.main-left{
+    width:50%;
+}
+
+/* Experience title styles */
+.experience-title{
+    font-family: 'Bebas Neue', cursive; /*to stand out, excite user mimicking ads*/
+    font-weight: bold;
+    font-size:3.75rem;
+    margin-bottom:20px;
+}
+
+/* Right side of the main content */
+.main-right{
+    width:50%;
+    display:flex;
+    justify-content:center;
+}
+
+/* Right side Main image styles */
+.main-image{
+    width:550px;
+    height: 400px;
+    border:2px solid #00ff9c;
+    border-radius:10px;
+    padding:10px;
+    background:#0b0f14;
+}
+
+/*=======================================================================
+Site Title styling section
+ ========================================================================*/
+  /*Site title styles retro, nostalgic 'gaming' aesthetics*/
+.site-title{
+
+    font-family:'Press Start 2P', monospace;
+    font-size: 3rem;
+    color:#00ff9c;
+    text-align:center;
+    letter-spacing:2px;
+/*glowing effect*/
+    text-shadow:
+    0 0 2px #00ff9c,
+    0 0 5px #00ff9c;
+
+    animation: glowPulse 2s ease-in-out infinite;
+}
+/* Subtle Neon Glow pulse animation for the site title creates retro aesthetics */
+@keyframes glowPulse{
+
+0%{
+text-shadow:
+0 0 2px #00ff9c,
+0 0 5px #00ff9c;
+}
+
+50%{
+text-shadow:
+0 0 6px #00ff9c,
+0 0 10px #00ff9c;
+}
+
+}
+
+/*===============================================================
+'How It Works' scroll-triggering button styling
+
+=================================================================  */
+.action-btn{
+    display:inline-block;
+    padding:14px 20px;
+    border:2px solid #00ff9c;
+    color:#00ff9c;
+    text-decoration:none; /*removes underlines or any default styles*/
+    border-radius:8px;
+    margin-top: 20px;
+}
+
+.action-btn:hover{
+    background:#00ff9c;
+    color:black;
+}
+
+/*styles each section titles of the site*/
+.subtitles{
+    font-family:'Press Start 2P', monospace;
+    font-size: 40px;
+    color:#00ff9c;
+    text-align:center;
+    margin-top:90px;
+}
+
+/*icon styling*/
+.subtitles svg {
+    width: 55px;
+    height: 55px;
+    fill: #00ff9c;
+    animation: rotate 4s linear infinite;
+}
+
+/* ======================================================================
+Styles for the "How it works" section 
+========================================================================*/
+
+.how-it-works {
+  max-width: 1100px;
+  margin: 0 auto;
+  margin-bottom: 90px;
+  padding: 40px 20px;
+  color: white;
+}
+
+/*=============================================================================
+ Styles for the tab navigation and content
+reused throughout the site in different sections for consistency in design
+=============================================================================*/
+
+/*centre the navigation tabs and add some gap between them
+*/
+.how-tabs, .evolution-tabs {
+    display:flex;
+    justify-content:center;
+    gap:20px;
+}
+
+/*   Allows wrapping onto multiple lines for smaller screens with gaps for readability,
+   and consistent spacing between tabs.*/
+.how-tab-nav, .evolution-tab-nav {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+/* Styles for the tab buttons */
+.how-tab-btn, .file-tab-btn, .evolution-tab-btn {
+  background: transparent;
+  color: #7d7d7d;
+  border: none;
+  padding: 14px 18px;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+/* Hover effect for tab buttons for easy UX and UI*/
+.how-tab-btn:hover, .file-tab-btn:hover, .evolution-tab-btn:hover {
+  color: white;
+}
+
+/* Styles for the active state of tab buttons improves UI */
+.how-tab-btn.active, .file-tab-btn.active, .evolution-tab-btn.active {
+  background: #e9e9ef;
+  color: #1b1b1b;
+}
+
+/* Styles for the tab content area */
+.how-tab-content {
+  position: relative;/* Ensure the tab panels are positioned relative to this container */
+}
+
+/* Styles for the individual tab panels */
+.how-tab-panel {
+  display: none;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 50px;
+  align-items: center;
+}
+
+/* Styles for the active tab panel */
+.how-tab-panel.active {
+  display: grid;/* Show the active tab panel and maintain the grid layout */
+}
+
+
+/* ================================================================
+Styles for the right side of the tab panel (text)
+=================================================================== */
+
+.panel-right h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 2rem;
+}
+
+/* Styles for the paragraphs in the right side of the tab panel */
+.panel-right p {
+  color: #9a9a9a;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+/* Responsive styles for smaller screens */
+@media (max-width: 900px) {
+  .how-tab-panel,
+  .how-tab-panel.active {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .panel-right h2 {
+    font-size: 1.6rem;
+  }
+}
+
+/* Styles for the image in the "How it works" section gives retro aesthetics as UX */
+#how-it-works img 
+{
+  margin-top: 20px;
+  width:500px;
+  height: auto;
+  border: white solid 2px;
+  border-radius:10px;
+  padding:10px;
+}
+
+/*===============================================================================
+  "Speed Evolution" styling section
+ ================================================================================ */
+
+.description /*description just under subt title*/{
+  color: #9a9a9a;
+  font-size: 20px;
+  line-height:1.7;
+  margin-bottom:20px;
+  text-align: center;
+}
+
+/* speed evolution conteiner */
+.meters {
+  max-width: 1100px;
+  margin: 60px auto;
+}
+
+/* Styles for the rows of the speed comparison section */
+.meter-row {
+  display: grid;
+  grid-template-columns: 150px 120px 1fr 180px;
+  align-items: center;
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+/* styling the meter bars */
+meter {
+  width: 100%;
+  height: 50px;
+  appearance: none;
+  -webkit-appearance: none; /*removes browser default styling for authors personalisation*/
+}
+
+meter::-webkit-meter-bar {/* Styles for the background of the meter bar */
+  background: #e5e5e5;
+  border-radius: 8px;
+}
+
+meter::-webkit-meter-optimum-value {/* Red for the filled portion of the meter bar to stand out */
+  background: #ff3b30;
+  border-radius: 8px;
+}
+
+meter::-moz-meter-bar {/* Styles for the background of the meter bar in Firefox */
+  background: #ff3b30;
+  border-radius: 8px;
+}
+
+/*===========================================================================================
+Styles for type of connection, speed and period in the speed comparison section
+==============================================================================================*/
+.type {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: #eaeaea;
+}
+
+.speed {
+  font-family: Arial, sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #777;
+}
+
+.period {
+  font-family: Arial, sans-serif;
+  font-size: 1rem;
+  color: #b0b0b0;
+}
+
+/*=======================================================================================
+ Styles for the interactive comparison section (tabbed) dial vs fibre
+ ======================================================================================== */
+
+.downloads h3
+{
+  font-family:'Press Start 2P', monospace;
+  color: white;
+  text-align:center;
+  margin-top:90px;
+}
+
+.layout{
+  display:grid; /*all shown side by side*/
+  grid-template-columns:200px 1fr;
+  gap:50px;
+  align-items:start;
+}
+
+@media (max-width:900px)/*responsive design for smaller screens*/{
+
+.layout{
+grid-template-columns:1fr;
+}
+
+.file-tabs{
+flex-direction:row;
+justify-content:center;
+}
+
+}
+
+.file-tabs {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;/* prevents full-width stretching */
+  gap: 12px;
+  margin-left: 30px;
+  padding: 40px;
+  width: fit-content;/* keeps the container small and only occupies what it needs */
+}
+
+/* Styles for the file tab buttons when comparing the files */
+.file-tabs button {
+  width: auto;
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+/* Styles for the active state of the file tab buttons */
+.file-tab-content {
+  width: 100%;
+  margin-top: 30px;
+}
+
+/* Styles for the file panels that show the download times */
+.file-panel {
+  display: none;
+}
+
+/* Styles for the active file panel */
+.file-panel.active {
+  display: block;
+}
+
+/* Styles for the download cards in the interactive comparison section */
+.download-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px;
+  margin-right: 30px;
+}
+
+/* Styles for each download card in the interactive comparison section */
+.download-card {
+  background: #181833;
+  border-radius: 30px;
+  padding: 25px 15px;
+  text-align: center;
+}
+
+/* Styles for the emojis in the download cards (fun aesthetics purposes for all ages)*/
+.download-icon {
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+}
+
+/* Styles for the type of download in the download cards */
+.download-type {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+/* ========================================================================================
+Specific styles for the dial-up and fibre download types in the download cards
+=========================================================================================== */
+
+.dialup-type {
+  font-family: 'VT323', monospace;
+  color: #ff7a45;
+}
+
+.fibre-type {
+  font-family: 'VT323', monospace;
+  color: #19ff9c;
+}
+
+.download-time {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #f2ede6;
+  margin-bottom: 12px;
+}
+
+.download-caption {
+  font-size: 1.5rem;
+  color: #9b97a3;
+}
+
+/* Responsive styles for smaller screens for the interactive comparison section */
+@media (max-width: 900px) {
+  .download-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+/*[during testing, noticed that section #main to # speed evolution looked off on smaller screens]*/
+
+@media (max-width: 768px) {
+  #main,
+  #speedEvolution {
+    width: 100%;
+    padding: 1rem;
+    box-sizing: border-box;
+  }
+
+  .how-tab-nav,
+  .evolution-tab-nav,
+  .game-details-container,
+  .info-card-content {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .site-title {
+    font-size: 1.6rem;
+    line-height: 1.4;
+    letter-spacing: 1px;
+  }
+
+  #speedEvolution meter,
+  .game-options-container span,
+  .info-card,
+  .how-tab-panel,
+  .evolution-tab-panel {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+/*=========================================================================================
+Cons of dial up styling section
+set up a series of fact cards layed out in grid structure for easy information access and
+change user interaction/experience
+==========================================================================================*/
+
+.info-card {
+  background: #181833;
+  border-radius: 30px;
+  padding: 25px 15px;
+  text-align: center;
+}
+
+.info-icon svg  /*style icons*/{
+  width: 50px;
+  height: 50px;
+}
+
+.caption
+{
+  font-size: 1.5rem;
+  color: white;
+  font-family: 'VT323', monospace;
+}
+
+.info-card ul {
+  text-align: center;
+  margin-top: 20px;
+  padding-left: 20px;
+}
+
+.info-card-content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /*3 by 2 display of fact cards at once*/
+  gap: 30px;
+  margin: 35px;
+}
+
+@media (max-width: 768px) {
+  .info-card-content {
+    grid-template-columns: 1fr;/*for smaller screens the fact cards are layed out in coloum manner*/
+  }
+}
+
+
+/*===========================================================================
+Interet Evolution styling setion
+similar to how-i-works section
+================================================================================*/
+
+.panel h2 {
+  margin-top: 0;
+  margin-bottom: 35px;
+  font-size: 1.8rem;
+  font-family: 'Bebas Neue', cursive;
+  color:#00ff9c
+}
+
+/* Styles for the paragraphs in the tabbed panel */
+.panel p {
+  color: white;
+  font-size: 1.5rem;
+  line-height: 1.7;
+  margin-bottom: 16px;
+  font-family: 'bebas neue', cursive;
+}
+
+/*panel container styling*/
+.panel{
+  background: #101020;
+  border-radius: 30px;
+  padding: 40px 40px;
+  margin-top: 20px;
+
+  max-width: 800px;
+  margin: 0 auto;
+
+  text-align: center;
+
+  border: 2px solid rgba(0,255,156,0.2);
+  box-shadow: 0 0 20px rgba(0,255,156,0.15);
+}
+
+/*bullet point styling for clear structure of information*/
+.panel ul{
+  padding: 0;
+  margin-top: 20px;
+  margin-left: 20px;
+  text-align: left;
+}
+
+.panel li{
+  margin: 12px 0;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: #d0d0d0;
+}
+/*changed bullet point design for checklist style*/
+.panel li::before{
+  content: "✓";
+  color: #00ff9c;
+  margin-right: 10px;
+}
+
+/*tab content container*/
+.evolution-tab-content {
+  position: relative;
+}
+
+/*tab information panel container*/
+.evolution-tab-panel {
+  display: none;
+}
+
+.evolution-tab-panel.active {
+  display: block;
+}
+
+
+/*================================================================================================================================ 
+STYLES FOR QUIZ SECTION template from : https://dev.to/sulaimonolaniran/building-a-simple-quiz-with-html-css-and-javascript-4elp 
+
+modification: font, font colours, background colours, results display.
+================================================================================================================================*/
+
+.main-quiz{
+    width: 100%;
+    padding: 30px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 45px;
+}
+
+.game-quiz-container{
+    width: 40rem;
+    height: 30rem;
+    background-color: rgb(10, 2, 51);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 30px;
+}
+
+/*to arrange game stats evenky accross available space*/
+.game-details-container{
+    width: 80%;
+    height: 4rem;
+    display: flex;
+    justify-content: space-around; /*distributes items evenly with space around each element*/
+    align-items: center;
+}
+
+.game-details-container h1{
+    font-size: 1.2rem;
+    color: white;
+}
+
+.game-question-container{
+    width: 80%;
+    height: 8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #00ff88;
+    border-radius: 25px;
+    color: white;
+}
+
+.game-question-container h1{
+    font-size: 1.1rem;
+    text-align: center;
+    padding: 3px;
+    color: white;
+    
+}
+
+.game-options-container{
+    width: 80%;
+    height: 12rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.game-options-container span{
+    width: 45%;
+    height: 3rem;
+    border: 2px solid #00ff88;
+    border-radius: 20px;
+    overflow: hidden;/*prevents content from spilling out for clean look*/
+}
+
+/*Label acts as the visible clickable area for options*/
+span label{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.3s;
+    font-weight: 600;
+    color: rgb(248, 246, 246);
+}
+
+/*hover effect for visual feedback*/
+
+span label:hover{
+  /*for older microsoft and webkit browsers*/
+    -ms-transform: scale(1.12);
+    -webkit-transform: scale(1.12);
+    transform: scale(1.12);
+    color: white;
+}
+
+/*allows custom styling instead of default*/
+input[type="radio"] {
+    position: relative;
+    display: none;
+}
+/*applies stlying to the selected option*/
+input[type=radio]:checked ~ .option {
+    background: paleturquoise;
+}
+
+/*next question button styling*/
+.next-button-container{
+    width: 50%;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+}
+.next-button-container button{
+    width: 8rem;
+    height: 2rem;
+    border-radius: 10px;
+    background: none;
+    color: #00ff88;
+    font-weight: 600;
+    border: 2px solid white;
+    cursor: pointer;
+    outline: none;
+}
+.next-button-container button:hover{
+    background-color: rgb(143, 93, 93);
+}
+
+/*styling for pop-up message*/
+.modal-container{
+    display: none;
+    position: fixed;
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.4); /*controls how opaque background becomes when message appears so website still visible*/
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; 
+    -webkit-animation: fadeIn 1.2s ease-in-out;
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+.modal-content-container{
+    height: 25rem;
+    width: 25rem;
+    background-color: rgb(43, 42, 42);
+    display: flex;
+    flex-direction: column;/*items appear line by line*/
+    align-items: center;
+    gap: 20px;/*all gaps are for readability*/
+    border-radius: 25px;
+}
+
+
+.modal-content-container h1{
+    font-size: 1.3rem;
+    height: 3rem;
+    color: lightgray;
+    text-align: center;
+}
+
+/*results tab container styling*/
+.grade-details{
+    width: 15rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    gap: 10px;
+}
+
+.grade-details p{
+    color: white;
+    text-align: center;
+}
+
+.modal-button-container{
+    height: 2rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.modal-button-container button{
+    width: 10rem;
+    height: 2rem;
+    background: none;
+    outline: none;
+    border: 1px solid rgb(252, 242, 241);
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+    border-radius: 20px;
+}
+.modal-button-container button:hover{
+    background-color: rgb(83, 82, 82);
+}
+
+/*quiz design for smaller screens*/
+@media(min-width : 300px) and (max-width : 350px){
+    .game-quiz-container{
+        width: 90%;
+        height: 80vh;
+     }
+     .game-details-container h1{
+        font-size: 0.8rem;
+     }
+
+     .game-question-container{
+        height: 6rem;
+     }
+     .game-question-container h1{
+       font-size: 0.9rem;
+    }
+
+    .game-options-container span{
+        width: 90%;
+        height: 2.5rem;
+    }
+    .game-options-container span label{
+        font-size: 0.8rem;
+    }
+    .modal-content-container{
+        width: 90%;
+        height: 25rem;
+    }
+
+    .modal-content-container h1{
+        font-size: 1.2rem;
+    }
+}
+
+@media(min-width : 350px) and (max-width : 700px){
+   .game-quiz-container{
+       width: 90%;
+       height: 80vh;
+    }
+    .game-details-container h1{
+        font-size: 1rem;
+    }
+
+    .game-question-container{
+        height: 8rem;
+    }
+
+    .game-question-container h1{
+        font-size: 0.9rem;
+     }
+
+    .game-options-container span{
+        width: 90%;
+    }
+    .modal-content-container{
+        width: 90%;
+        height: 25rem;
+    }
+    .modal-content-container h1{
+        font-size: 1.2rem;
+    }
+}
+
+/* smooth animation for pop up message for positive, calm UX*/
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+  }
+/*for older browsers*/
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+/*===========================================================================================
+crdits and references section styling
+===========================================================================================*/
+
+#credits {
+  display:flex;
+  flex-direction:column;
+  gap: 30px;
+  background: linear-gradient( /*colour gradient effect signifying end of page*/
+  to bottom,
+  #05070a,
+  #090922,
+  #1e1e34);
+  text-align:center;
+  padding: 80px 20px;      /* adds vertical breathing space */
+  align-items: center;
+
+}
+
+
+/* Styles for the "About the Author" button */
+#about-author {
+    display:inline-block;
+    padding:14px 20px;
+    border:2px solid #00ff9c;
+    color:#00ff9c;
+    background: black;
+    font-weight: bold;
+    font-size: 1.25rem;
+    text-decoration:none;
+    border-radius:8px;
+    margin-top: 20px;
+    font-family:'VT323', monospace;
+    cursor:pointer;
+}
+/*responsive design for the button when cursor is on the button*/
+#about-author:hover{
+    background:#00ff9c;
+    color:black;
+}
+
+/* popup window */
+#author-info{
+  display:none;
+  /* for the pop up to be centered */
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+
+  background:#0b0b1f;
+  padding:40px;
+  max-width:500px;
+  border-radius:8px;
+  border:1px solid #19ff9c;
+  align-self:center;
+  text-align:center;
+  font-family:'VT323', monospace;
+  color:white;
+  margin-top: 20px;
+
+  z-index: 1000; /* ensures the popup appears above other content */
+}
+
+/* OK button */
+#close-author-info{
+  margin-top:20px;
+  padding:8px 18px;
+  background:#19ff9c;
+  border:none;
+  cursor:pointer;
+}
+/*responsive design for smaller screens*/
+@media (max-width: 768px) {
+  #author-info {
+    width: 92vw;
+    padding: 1rem;
+    border-radius: 12px;
+  }
+
+  #author-info h3 {
+    font-size: 1rem;
+  }
+
+  #author-info p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  #close-author-info {
+    width: 100%;
+    margin-top: 1rem;
+  }
+}
+
+/*==========================================================================================
+Dial up SIMULATION  styling
+Mimicks design or real dial-up modem and simulates its behaviour when connecting to the internet
+improve user experience of learning by providing visuals
+============================================================================================*/
+
+/*styling for simulation container*/
+#simulation {
+  width: 85%;
+  max-width: 1100px;
+  background: #080818;
+  border: 6px solid #19ff9c;
+
+  border-radius: 24px;
+  padding: 40px 28px 28px;
+  box-sizing: border-box;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+  font-family: 'VT323', monospace;
+
+  margin: 40px auto;
+}
+
+
+/* blinking lights animation styling for inidcators improves UX
+Retro aesthetics for  */
+.blink{
+
+    font-family:'Press Start 2P', monospace;
+    font-size: 2rem;
+    color:#eaea1e;
+    text-align:center;
+    letter-spacing:2px;
+
+    text-shadow:
+    0 0 2px #eaea1e,
+    0 0 5px #eaea1e;
+
+    animation: glowPulseB 1s  infinite;
+}
+
+/* Glow pulse animation styling*/
+@keyframes glowPulseB{
+
+0%{
+text-shadow:
+0 0 2px #eaea1e,
+0 0 5px #eaea1e;
+}
+
+50%{
+text-shadow:
+0 0 6px #eaea1e,
+0 0 10px #eaea1e;
+}
+
+}
+
+/*modem name and display container styling*/
+
+.modem-display {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+  width: 100%;
+  background-color: #181831;
+  border: 1px solid #505251;
+  border-radius: 18px;
+  padding: 16px 22px;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+}
+
+
+.modem-display h1 {
+  font-family: 'Bebas Neue', cursive;
+  font-weight: bold;
+  font-size: 3.1rem;
+  margin: 0;
+}
+
+/*pwr tx rx cd indicators styling*/
+.status-indicators {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.1rem;
+}
+.light {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #444;
+  display: inline-block;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+}
+
+.light.active {
+  box-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
+}
+
+/*terminal connection output container styling*/
+.connection-info {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  background: #111126;
+  border-radius: 12px;
+  padding: 12px 18px;
+  font-size: 1.3rem;
+}
+
+.connection-info p {
+  margin: 0;
+}
+
+/*progress bar styling*/
+.progress-wrapper {
+  width: 100%;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 18px;
+  background: #222;
+  border-radius: 999px;
+  overflow: hidden;
+  border: 1px solid #333;
+}
+
+#connection-progress {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #00ff88, #00c2ff);/*progress bar has spectrun of 2 colourd*/
+  transition: width 0.35s ease;
+}
+
+/*dial and hang up button container*/
+.button-row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#dialBtn{
+    background:#00ff9c;
+    color:black;
+    border:none;
+    padding:14px 20px;
+    font-size:1.25rem;
+    border-radius:15px;
+    cursor:pointer;
+    font-family:'Bebas Neue', cursive;
+}
+
+/*responsive hover effect for clear UI*/
+#dialBtn:hover{
+    background:#0a0a0a;
+    color:#00ff9c;
+    border:2px solid #00ff9c;
+    border-radius:15px;
+}
+
+#hangUpBtn{
+    background:#d6453d;
+    color:black;
+    border:none;
+    padding:14px 20px;
+    font-size:1.25rem;
+    border-radius:15px;
+    cursor:pointer;
+    font-family:'Bebas Neue', cursive;
+}
+#hangUpBtn:hover{
+    background:#0a0a0a;
+    color:#d6453d;
+    border:2px solid #d6453d;
+    border-radius:15px;
+}
+
+/*placeholder container styling for the output during simulation*/
+.simulation-container {
+  width: 100%;
+  background: #181833;
+  border-radius: 30px;
+  padding: 30px 25px;
+  box-sizing: border-box;
+  min-height: 260px;
+  max-height: 260px;
+  overflow-y: auto;
+  text-align: left;
+  border: 1px solid #505251;
+}
+
+#terminal-output {
+  font-size: 28px;
+  line-height: 1.4;
+  color: #00ff9c;
+}
+
+/*fact box appearing during simulation styling*/
+.fact-box {
+  width: 100%;
+  box-sizing: border-box;
+  background: #111126;
+  border-left: 4px solid #00ff9c;
+  border-radius: 14px;
+  padding: 14px 18px;
+  color: white;
+}
+
+.fact-box p {
+  margin: 8px 0 0;
+}
+
+/*for when hidden state*/
+.hidden {
+  display: none;
+}
+
+button:disabled {
+  opacity: 0.5;/*to appear greyer when one of the button is diabled during simulation*/
+  cursor: not-allowed;/*disables*/
+}
+
+/*============================================================================================
+Dial-up audio file styling 
+Kept browser stlying as t fit retro aesthetics
+author: W3Schools
+modification: size, display, position
+============================================================================================*/
+#audio-section{
+  text-align: center;
+  margin-top: 35px;
+  margin-bottom: 35px;
+}
+
+#sound{
+  display:block;
+  margin: 20px auto;
+  width: 500px;
+  max-width: 90%;
+  height: 100px;
+}
+
+/*container that explains each part of the audio fact-card style using bullet poitn for clear structure*/
+#audio-description{
+  display: inline-block;
+  width: 90%;
+  box-sizing: border-box;
+  background: #111126;
+  border-left: 4px solid #00ff9c;
+  border-radius: 14px;
+  padding: 14px 18px;
+  color: white;
+  font-family: 'VT323', monospace;
+  font-size: 1.25rem;
+}
+
+#audio-description ul,li{
+  color:white;
+  text-align: left;
+}
+
+/*===================================================================================================
+BACK TO TOP BUTTON Styling
+
+author: W3SChools
+modification: background colours of button, border including when cursor hovers for retro aesthetics
+=====================================================================================================*/
+
+#TopBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  font-size: 1rem;
+  border-color: #00ff88;
+  outline: none;
+  background-color: rgb(2, 12, 0);
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+/*responsive hover design for UI*/
+#TopBtn:hover {
+  background-color: white;
+  color: black;
+  border-color: rgb(0, 255, 13);
+}
+
+/*=======================================================================================
+References page styling
+simple but with youthful and retro aesthetics
+
+#references: references for content of pages
+#code: references for the code to make the pages
+===========================================================================================*/
+
+#references h3, #code h3{
+  font-family:'Press Start 2P', monospace;
+  color: white;
+  margin-top:40px;
+  margin-bottom: 30px;
+}
+
+/*wild card to apply to all elements*/
+#references *, #code * {
+  color: #9a9a9a;
+  font-size: 1.25rem;
+  line-height: 1.7;
+}
+
+#references ul, #code ul {
+  list-style-type: none;
+  margin-bottom: 20px;
+}
+
+#references a, #code a{
+  text-decoration: none;
+  color: #00ff9c;
+}
+
+#references li, #code li{
+  margin-bottom:20px;
+}
+
+#references a:hover, #code a:hover {
+  color: rgb(94, 0, 137);
+  font-weight: bold;
+}
+
+/*container styling*/
+#references, #code{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
